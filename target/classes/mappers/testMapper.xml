@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.study.mapper.testMapper">
+ 
+ 	<!-- 전체 -->
+ 	<select id="selectValue" resultType="testVO">
+        SELECT *
+        FROM study.readtest
+    </select>
+    
+    <!-- 생성 -->
+     <insert id="createValue">
+		 INSERT INTO study.readtest (value1, value2 , value3) 
+		 VALUES (#{value1},#{value2},#{value3})
+	 </insert>	
+
+	<!-- 읽기 -->
+	<select id="readValue" resultType="testVO">
+		SELECT value1, value2 , value3
+        FROM study.readtest
+        WHERE value1 = #{value1}
+	</select>
+
+	<!-- 수정 -->
+	<update id="updateValue">
+		UPDATE study.readtest
+		SET value2 = #{value2}, value3 =#{value3} 
+		WHERE value1 = #{value1}
+ 	</update>
+
+	<!-- 삭제 -->
+	<delete id="deleteValue">
+		DELETE FROM study.readtest
+		WHERE value1 = #{value1}
+	</delete>
+	
+</mapper>
+
